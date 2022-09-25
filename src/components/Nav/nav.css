@@ -1,0 +1,32 @@
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    color:aliceblue;
+    font-family: "Bangers" , cursive;
+    letter-spacing: 2.5px;
+}
+
+.nav-left{
+    display: flex;
+}
+
+.nav-right{
+    /* text-decoration: none; */
+    margin-right: 20px;
+    color: aliceblue;
+    font-size: 32px;
+}
+
+.githublink{
+    color:aliceblue;
+}
+
+.header-image{
+    width: 40px;
+    margin:10px 10px;
+    border: 1px solid aliceblue;
+    border-top-left-radius: 27px ;
+    border-bottom-right-radius: 27px;
+}
