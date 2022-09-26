@@ -1,0 +1,15 @@
+.footer-container{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(201, 48, 21);
+    margin: 0;
+    z-index:99;
+    font-size: 26px;
+    text-align: center;
+    /* box-shadow: ; */
+}
+
+.link-footer{
+    text-decoration: none;
+    color:aliceblue;
+}

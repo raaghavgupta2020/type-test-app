@@ -1,0 +1,13 @@
+.challenge-container{
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px 0;
+}
+
+.challenge-header{
+    font-family: "Bangers", cursive;
+    font-size: 44px;
+    letter-spacing: 2px;
+}

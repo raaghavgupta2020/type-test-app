@@ -1,6 +1,9 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import Challenge from './components/Challenge/Challenge';
+import Footer from './components/Footer/Footer';
+import LandingPage from './components/Landing/Landing';
 import Nav from './components/Nav/nav';
 
 // function App() {
@@ -18,10 +21,11 @@ class App extends React.Component{
         {/* nav  */}
           <Nav/>
         {/* landing  */}
-
+          <LandingPage/>
         {/* challenge  */}
-
+          <Challenge/>
         {/* footer  */}
+          <Footer/>
       </div>
     )
   }
