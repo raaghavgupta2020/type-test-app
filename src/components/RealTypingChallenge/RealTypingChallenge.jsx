@@ -1,7 +1,9 @@
 import React from "react";
+import TestLetter from "../TestLetter/TestLetter";
 import "./RealTypingChallenge.css"
 
-const RealChallenge = ({selectedParagraph, timeStarted, timeRemaining ,words ,characters, wpm}) => {
+const RealChallenge = ({selectedParagraph, timeStarted, timeRemaining ,words ,characters, wpm , testInfo}) => {
+    console.log(testInfo)
     return (
         <div className="real-challenge-container">
             <div className="timer-container">
@@ -12,7 +14,15 @@ const RealChallenge = ({selectedParagraph, timeStarted, timeRemaining ,words ,ch
             <div className="text-area-container">
                 <div className="text-area-left">
                     <div className="text-area test-paragraph">
-                        {selectedParagraph}
+                        {/* {selectedParagraph} */}
+                        {
+                            testInfo.map((individualLetterInfo)=>{
+                              return (
+                                // <div>{individualLetterInfo.testLetter} - {individualLetterInfo.status}</div> 
+                                <TestLetter letterinfo={individualLetterInfo}/>
+                              ) 
+                            })
+                        }
                     </div>
                 </div>
                 <div className="text-area-right">

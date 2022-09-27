@@ -27,13 +27,29 @@ class App extends React.Component{
     words:0,
     characters:0,
     wpm:0,
+    testInfo:[],
   }
 
   componentDidMount() {
-    fetch(URL).then(res=>res.text()).then(data=>{
+    fetch(URL)
+    .then(res=>res.text())
+    .then(data=>{
       this.setState({selectedParagraph : data})
       // console.log(data);
+      const selectedParagraphArray = data.split("");
+      // console.log(selectedParagraphArray)
+
+      const testInfo = selectedParagraphArray.map(selectedLetter=>{
+        return{ //for each letter in our selected array we will get an object having these 2 attributes
+          testLetter : selectedLetter,
+          status : "notAttempted",
+        }
+      })
+      // console.log(testInfo)//this is an array of objects (each object has 2 attributes-> testLetter and status)
+      this.setState({testInfo : testInfo});//or we can write as this.setState({testInfo})
     })
+
+    
   }
 
   render(){
@@ -53,6 +69,7 @@ class App extends React.Component{
             wpm = {this.state.wpm}
             timeRemaining={this.state.timeRemaining}
             timeStarted={this.state.timeStarted}
+            testInfo={this.state.testInfo}
           />
         {/* footer  */}
           <Footer/>
