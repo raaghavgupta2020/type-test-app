@@ -4,6 +4,8 @@
     flex-grow: 1;
     align-items: center;
     justify-content: center;
+    font-family: "Poppins", sans-serif;
+    
 }
 
 .timer-container{
@@ -41,9 +43,10 @@
     width:50%;
 }
 .textarea {
+    font-size: 15px;
     text-align: left;
     flex-grow: 1;
-    height: 400px;
+    height: 600px;
     width: 100%;
     padding: 10px;
     line-height: 18px;
@@ -62,9 +65,12 @@
 }
 
 .test-paragraph {
-    font-size: 12px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1px;
     background: #e9e7e4;
     padding: 12px;
+    font-weight:lighter;
     /* display: flex;
     flex-direction: row; */
 }

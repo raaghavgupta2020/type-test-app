@@ -1,12 +1,12 @@
 import React from "react";
 import "./RealTypingChallenge.css"
 
-const RealChallenge = ({selectedParagraph}) => {
+const RealChallenge = ({selectedParagraph, timeStarted, timeRemaining ,words ,characters, wpm}) => {
     return (
         <div className="real-challenge-container">
             <div className="timer-container">
-                <p className="timer">00:60</p>
-                <p className="timerr">Start typing to start the test</p>
+                <p className="timer">00:{timeRemaining>=10 ? timeRemaining : `0${timeRemaining}` }</p>
+                <p className="timerr">{!timeStarted && "Start typing to start the test"}</p>
             </div>
 
             <div className="text-area-container">

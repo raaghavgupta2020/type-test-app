@@ -14,16 +14,46 @@ import Nav from './components/Nav/nav';
 //   );
 // }
 
+const TotalTime = 60;
+
+const URL = "http://metaphorpsum.com/paragraphs/1/9"
+
 class App extends React.Component{
+
+  state={
+    selectedParagraph : "",
+    timeStarted: false,
+    timeRemaining  :TotalTime,
+    words:0,
+    characters:0,
+    wpm:0,
+  }
+
+  componentDidMount() {
+    fetch(URL).then(res=>res.text()).then(data=>{
+      this.setState({selectedParagraph : data})
+      // console.log(data);
+    })
+  }
+
   render(){
+
     return(
+
       <div className='app'>
         {/* nav  */}
           <Nav/>
         {/* landing  */}
           <LandingPage/>
         {/* challenge  */}
-          <Challenge/>
+          <Challenge
+            selectedParagraph={this.state.selectedParagraph}
+            words = {this.state.words}
+            characters={this.state.characters}
+            wpm = {this.state.wpm}
+            timeRemaining={this.state.timeRemaining}
+            timeStarted={this.state.timeStarted}
+          />
         {/* footer  */}
           <Footer/>
       </div>

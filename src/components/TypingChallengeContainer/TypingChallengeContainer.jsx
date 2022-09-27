@@ -3,7 +3,7 @@ import CDC from "../ChallengeDetailsCard/CDC";
 import RealChallenge from "../RealTypingChallenge/RealTypingChallenge";
 
 import "./TypingChallengeContainer.css"
-const TypingChallengeContainer = ({words,characters,wpm}) => {
+const TypingChallengeContainer = ({selectedParagraph, timeStarted, timeRemaining ,words ,characters, wpm}) => {
     return ( 
         <div className="typing-challenge">
             <div className="details-container">
@@ -15,7 +15,7 @@ const TypingChallengeContainer = ({words,characters,wpm}) => {
                 <CDC cardName="Speed" cardValue={wpm}/>
             </div>
             <div className="real-challenge">
-                <RealChallenge selectedParagraph="Hello World Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World  Hello World   "/>
+                <RealChallenge selectedParagraph={selectedParagraph}words = {words} characters={characters} wpm = {wpm} timeRemaining={timeRemaining} timeStarted={timeStarted}/>
             </div>
         </div>
     );

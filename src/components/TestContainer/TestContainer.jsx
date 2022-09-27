@@ -3,25 +3,28 @@ import TryAgain from "../TryAgain/TryAgain";
 import TypingChallengeContainer from "../TypingChallengeContainer/TypingChallengeContainer";
 import "./TestContainer.css"
 
-const TestContainer = ({
-    //props
-    words,
-    characters,
-    wpm
-}) => {
-    return ( 
-        
+const TestContainer = ({selectedParagraph, timeStarted, timeRemaining ,words ,characters, wpm}) => {
+
+    // const timeRemaining = 1;
+
+    return (  
         <div className="test-container">
-            <div className="typing-challenge-container">
-                <div className="typing-test">
-                    <TypingChallengeContainer words={words} characters={characters} wpm={wpm}/>
+        {
+            //conditional rendering 
+            timeRemaining > 0 ? (
+                <div className="typing-challenge-container">
+                    <div className="typing-test">
+                        <TypingChallengeContainer selectedParagraph={selectedParagraph}words = {words} characters={characters} wpm = {wpm} timeRemaining={timeRemaining} timeStarted={timeStarted}/>
+                    </div>
                 </div>
-            </div>
-            {/* <div>
-                <h1 className="try-again-container">
-                    <TryAgain words={words} characters={characters} wpm={wpm}/>
-                </h1>
-            </div> */}
+            ) : (
+                <div>
+                    <h1 className="try-again-container">
+                        <TryAgain words={words} characters={characters} wpm={wpm}/>
+                    </h1>
+                </div>
+            )
+        }
         </div>
     );
 }
