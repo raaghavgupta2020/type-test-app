@@ -1,7 +1,7 @@
 import React from "react";
 import "./TryAgain.css"
 
-const TryAgain = ({words,characters,wpm}) => {
+const TryAgain = ({words,characters,wpm,handleRetryButton}) => {
     return (
         <div className="try-again-cont">
             <h1 className="ta-header">Test results</h1>
@@ -11,7 +11,9 @@ const TryAgain = ({words,characters,wpm}) => {
                 <p>Speed: {wpm} wpm</p>
             </div>
             <div className="buttons">
-                <button className="end-buttons first">Re-try</button>
+                <button onClick={()=>{
+                    handleRetryButton();
+                }} className="end-buttons first">Re-try</button>
                 <button onClick={()=>{
                     window.open("https://www.facebook.com/");
                 }} className="end-buttons second">Share</button>

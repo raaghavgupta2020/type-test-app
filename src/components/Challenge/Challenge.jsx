@@ -2,7 +2,7 @@ import React from "react";
 import TestContainer from "../TestContainer/TestContainer";
 import "./Challenge.css"
 
-const Challenge = ({selectedParagraph, timeStarted, timeRemaining ,words ,characters, wpm , testInfo ,handleUserInput}) => {
+const Challenge = ({selectedParagraph, timeStarted, timeRemaining ,words ,characters, wpm , testInfo ,handleUserInput,handleRetryButton}) => {
     return ( 
         <div className="challenge-container">
             <h1 className="challenge-header">
@@ -17,6 +17,7 @@ const Challenge = ({selectedParagraph, timeStarted, timeRemaining ,words ,charac
                 timeStarted={timeStarted}
                 testInfo={testInfo}
                 handleUserInput={handleUserInput}
+                handleRetryButton={handleRetryButton}
             />
         </div>
     );
