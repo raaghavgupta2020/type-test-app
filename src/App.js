@@ -52,6 +52,31 @@ class App extends React.Component{
     
   }
 
+  //we wanted to pass some info from child(RealTypingChallenge.js) to parent(App.js)
+  handleUserInput= (inputValue) => {
+    console.log(inputValue);
+    //as soon as this is fired we need to start running out timer 
+    if(this.state.timeStarted === false) {
+      this.startTimer();
+    }
+  }
+
+  startTimer= ()=>{
+    this.setState({timeStarted:true}) //this is for removing "Start typign to start the test" line
+    const timer = setInterval(()=>{
+      //first argument is an anonymous function and 2nd argument is time 
+      //we want to update our time remaning after every second
+      if(this.state.timeRemaining > 0){
+        this.setState({timeRemaining : this.state.timeRemaining-1 , })
+      }else{
+        clearInterval(timer) //this stops the setaianterval fucntion
+      }
+    }, 1000) //this means 1 second
+
+    //setTimeout runs the particular piece of code after that particular amount of time 
+    //setInterval runs a piece of code again and again after that particular time interval 
+  }
+
   render(){
 
     return(
@@ -70,6 +95,7 @@ class App extends React.Component{
             timeRemaining={this.state.timeRemaining}
             timeStarted={this.state.timeStarted}
             testInfo={this.state.testInfo}
+            handleUserInput={this.handleUserInput}
           />
         {/* footer  */}
           <Footer/>
