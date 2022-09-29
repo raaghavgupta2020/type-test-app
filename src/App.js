@@ -5,6 +5,7 @@ import Challenge from './components/Challenge/Challenge';
 import Footer from './components/Footer/Footer';
 import LandingPage from './components/Landing/Landing';
 import Nav from './components/Nav/nav';
+import {SAMPLE_PARAGRAPHS} from "./../src/data/sampleParagraphs"
 
 // function App() {
 //   return (
@@ -25,23 +26,48 @@ import Nav from './components/Nav/nav';
  *    }
  * ]
  */
-const TotalTime = 10;
+const TotalTime = 60;
 
 const URL = "http://metaphorpsum.com/paragraphs/1/9"
 
+const DefaultState = {
+  //as everyhting is constant obly , when we will fetch a new paragraph we will return to this default state
+  selectedParagraph : "",
+  timeStarted: false,
+  timeRemaining  :TotalTime,
+  words:0,
+  characters:0,
+  wpm:0,
+  testInfo:[],
+}
+
 class App extends React.Component{
 
-  state={
-    selectedParagraph : "",
-    timeStarted: false,
-    timeRemaining  :TotalTime,
-    words:0,
-    characters:0,
-    wpm:0,
-    testInfo:[],
+  state=DefaultState;
+
+  fetchnewparagraphFallback= () => {
+    //taking a random paragraph from the sample paragraphs array
+    const data = SAMPLE_PARAGRAPHS[
+      Math.floor(Math.random() * SAMPLE_PARAGRAPHS.length)
+    ];
+    this.setState({selectedParagraph : data})
+      // console.log(data);
+      const selectedParagraphArray = data.split("");
+      // console.log(selectedParagraphArray)
+
+      const testInfo = selectedParagraphArray.map(selectedLetter=>{
+        return{ //for each letter in our selected array we will get an object having these 2 attributes
+          testLetter : selectedLetter,
+          status : "notAttempted",
+        }
+      })
+      // console.log(testInfo)//this is an array of objects (each object has 2 attributes-> testLetter and status)
+      this.setState({ ...DefaultState, testInfo : testInfo , selectedParagraph:data});//or we can write as this.setState({testInfo})
+      //this statement will extract everyhting from the default state and then overwrite the properties mentioned
+    
   }
 
-  componentDidMount() {
+  fetchnewparagraph = () => {
     fetch(URL)
     .then(res=>res.text())
     .then(data=>{
@@ -57,10 +83,13 @@ class App extends React.Component{
         }
       })
       // console.log(testInfo)//this is an array of objects (each object has 2 attributes-> testLetter and status)
-      this.setState({testInfo : testInfo});//or we can write as this.setState({testInfo})
+      this.setState({ ...DefaultState, testInfo : testInfo , selectedParagraph:data});//or we can write as this.setState({testInfo})
+      //this statement will extract everyhting from the default state and then overwrite the properties mentioned
     })
+  }
 
-    
+  componentDidMount() {
+    this.fetchnewparagraphFallback();
   }
 
   //we wanted to pass some info from child(RealTypingChallenge.js) to parent(App.js)
@@ -101,7 +130,9 @@ class App extends React.Component{
           },//WE WILL SPREAD OUT ALL THE ARRAY ELEMENTS THAT ARE PRESENT INSIDE THE STATE INSIDE THE NEW ARRAY THAT WE ARE CREATING 
           ...this.state.testInfo.slice(1)
           //basically it will put every element of the array in this setState 
-        ]
+        ],
+        characters,
+        words,
       })
 
       return;
@@ -115,6 +146,7 @@ class App extends React.Component{
 
     // Make a copy
     const testInfo = this.state.testInfo;
+    //when user presses backspace
     if (!(index === this.state.selectedParagraph.length - 1))
         testInfo[index + 1].status = "notAttempted";
 
@@ -135,8 +167,8 @@ class App extends React.Component{
 
 
   handleRetryButton = () => {
-    console.log("Retry called");
-    
+    // console.log("Retry called");
+     this.fetchnewparagraphFallback();
   }
 
   startTimer= ()=>{
