@@ -11,7 +11,7 @@ const LandingPage = () => {
             <div className="typewriter">
                 <Typewriter
                 options={{
-                    strings: ['Fast?', 'Accurately?' , 'Professionaly'],
+                    strings: ['Fast?', 'Accurately?' , 'Professionally'],
                     autoStart: true,
                     loop: true,
                 }}
