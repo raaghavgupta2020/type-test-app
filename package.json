@@ -1,7 +1,7 @@
 {
   "name": "typetest",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage" : "https://github.com/raaghavgupta2020/type-test-app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
