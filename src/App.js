@@ -28,7 +28,7 @@ import {SAMPLE_PARAGRAPHS} from "./../src/data/sampleParagraphs"
  */
 const TotalTime = 60;
 
-const URL = "http://metaphorpsum.com/paragraphs/1/9"
+// const URL = "http://metaphorpsum.com/paragraphs/1/9"
 
 const DefaultState = {
   //as everyhting is constant obly , when we will fetch a new paragraph we will return to this default state
@@ -67,26 +67,26 @@ class App extends React.Component{
     
   }
 
-  fetchnewparagraph = () => {
-    fetch(URL)
-    .then(res=>res.text())
-    .then(data=>{
-      this.setState({selectedParagraph : data})
-      // console.log(data);
-      const selectedParagraphArray = data.split("");
-      // console.log(selectedParagraphArray)
+  // fetchnewparagraph = () => {
+  //   fetch(URL)
+  //   .then(res=>res.text())
+  //   .then(data=>{
+  //     this.setState({selectedParagraph : data})
+  //     // console.log(data);
+  //     const selectedParagraphArray = data.split("");
+  //     // console.log(selectedParagraphArray)
 
-      const testInfo = selectedParagraphArray.map(selectedLetter=>{
-        return{ //for each letter in our selected array we will get an object having these 2 attributes
-          testLetter : selectedLetter,
-          status : "notAttempted",
-        }
-      })
-      // console.log(testInfo)//this is an array of objects (each object has 2 attributes-> testLetter and status)
-      this.setState({ ...DefaultState, testInfo : testInfo , selectedParagraph:data});//or we can write as this.setState({testInfo})
-      //this statement will extract everyhting from the default state and then overwrite the properties mentioned
-    })
-  }
+  //     const testInfo = selectedParagraphArray.map(selectedLetter=>{
+  //       return{ //for each letter in our selected array we will get an object having these 2 attributes
+  //         testLetter : selectedLetter,
+  //         status : "notAttempted",
+  //       }
+  //     })
+  //     // console.log(testInfo)//this is an array of objects (each object has 2 attributes-> testLetter and status)
+  //     this.setState({ ...DefaultState, testInfo : testInfo , selectedParagraph:data});//or we can write as this.setState({testInfo})
+  //     //this statement will extract everyhting from the default state and then overwrite the properties mentioned
+  //   })
+  // }
 
   componentDidMount() {
     this.fetchnewparagraphFallback();
