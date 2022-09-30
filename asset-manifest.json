@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/raaghavgupta2020/type-test-app/static/css/main.ac98b6ca.css",
-    "main.js": "/raaghavgupta2020/type-test-app/static/js/main.fc3dfbec.js",
+    "main.js": "/raaghavgupta2020/type-test-app/static/js/main.14528aa3.js",
     "static/media/Flash-PNG-Pic.png": "/raaghavgupta2020/type-test-app/static/media/Flash-PNG-Pic.48e731f576c2f219ba79.png",
     "static/media/logo.png": "/raaghavgupta2020/type-test-app/static/media/logo.904ac8fd0f7b25e86967.png",
     "index.html": "/raaghavgupta2020/type-test-app/index.html",
     "main.ac98b6ca.css.map": "/raaghavgupta2020/type-test-app/static/css/main.ac98b6ca.css.map",
-    "main.fc3dfbec.js.map": "/raaghavgupta2020/type-test-app/static/js/main.fc3dfbec.js.map"
+    "main.14528aa3.js.map": "/raaghavgupta2020/type-test-app/static/js/main.14528aa3.js.map"
   },
   "entrypoints": [
     "static/css/main.ac98b6ca.css",
-    "static/js/main.fc3dfbec.js"
+    "static/js/main.14528aa3.js"
   ]
 }
